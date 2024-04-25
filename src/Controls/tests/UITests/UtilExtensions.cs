@@ -45,7 +45,7 @@ namespace Microsoft.Maui.AppiumTests
 			{
 				app.EnterText("SearchBar", text);
 			}
-			app.Tap(goToTestButtonId);
+			app.Tap(GoToTestButtonId);
 
 			app.WaitForNoElement(GoToTestButtonId, "Timed out waiting for Go To Test button to disappear", TimeSpan.FromMinutes(1));
 		}
@@ -57,7 +57,7 @@ namespace Microsoft.Maui.AppiumTests
 			app.WaitForElement("SearchBar");
 			app.ClearText("SearchBar");
 
-			app.Tap(goToTestButtonId);
+			app.Tap(GoToTestButtonId);
 			app.WaitForElement("TestCasesIssueList");
 		}
 

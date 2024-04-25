@@ -42,15 +42,18 @@ namespace Microsoft.Maui.AppiumTests
 		[Category(UITestCategories.CarouselView)]
 		public void CarouselViewGoToNextCurrentItem()
 		{
-			this.IgnoreIfPlatforms(new TestDevice[] { TestDevice.iOS, TestDevice.Mac, TestDevice.Windows },
-				"For now, running this test only on Android.");
+			if (Device != TestDevice.Android)
+			{
+				Assert.Ignore("For now, running this test only on Android.");
+			}
+			else
+			{
+				int indexToTest = 3;
+				var index = indexToTest.ToString();
+				var nextIndex = (indexToTest + 1).ToString();
 
-			int indexToTest = 3;
-			var index = indexToTest.ToString();
-			var nextIndex = (indexToTest + 1).ToString();
-
-			CheckLabelValue("lblPosition", index);
-			CheckLabelValue("lblCurrentItem", index);
+				CheckLabelValue("lblPosition", index);
+				CheckLabelValue("lblCurrentItem", index);
 
 				App.Tap("btnNext");
 				CheckLabelValue("lblPosition", nextIndex);
