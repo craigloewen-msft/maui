@@ -1,4 +1,4 @@
-﻿using NUnit.Framework;
+using NUnit.Framework;
 using UITest.Appium;
 using UITest.Core;
 
@@ -39,11 +39,8 @@ namespace Microsoft.Maui.AppiumTests
 			base.FixtureTeardown();
 			try
 			{
-				if (App.AppState == ApplicationState.Running)
-				{
-					this.Back();
-					App.Click("GoBackToGalleriesButton");
-				}
+				this.Back();
+				App.Tap("GoBackToGalleriesButton");
 			}
 			catch (Exception e)
 			{
@@ -61,7 +58,7 @@ namespace Microsoft.Maui.AppiumTests
 			App.EnterText("SearchBarGo", issue);
 
 			App.WaitForElement("SearchButton");
-			App.Click("SearchButton");
+			App.Tap("SearchButton");
 		}
 	}
 }
