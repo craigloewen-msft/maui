@@ -22,16 +22,23 @@ namespace Maui.Controls.Sample.CollectionViewGalleries
 
 	}
 
-	public class CollectionViewCoreGalleryPage : ContentPage
+	public class CollectionViewCoreGalleryPage : NavigationPage
 	{
-		public CollectionViewCoreGalleryPage()
+		public CollectionViewCoreGalleryPage() : base(new CollectionViewCoreGalleryContentPage())
 		{
-			Content = new ScrollView
+
+		}
+
+		public class CollectionViewCoreGalleryContentPage : ContentPage
+		{
+			public CollectionViewCoreGalleryContentPage()
 			{
-				Content = new StackLayout
+				Content = new ScrollView
 				{
-					Spacing = 5,
-					Children =
+					Content = new StackLayout
+					{
+						Spacing = 5,
+						Children =
 					{
 						// VisitAndUpdateItemsSource (src\Compatibility\ControlGallery\src\UITests.Shared\Tests\CollectionViewUITests.cs)
 						TestBuilder.NavButton("Default Text Galleries", () => new DefaultTextGallery(), Navigation),
@@ -39,10 +46,11 @@ namespace Maui.Controls.Sample.CollectionViewGalleries
 						TestBuilder.NavButton("Observable Collection Galleries", () => new ObservableCollectionGallery(), Navigation),
 						// SelectionShouldUpdateBinding (src\Compatibility\ControlGallery\src\Issues.Shared\CollectionViewBoundSingleSelection.cs)
 						// ItemsFromViewModelShouldBeSelected (src\Compatibility\ControlGallery\src\Issues.Shared\CollectionViewBoundMultiSelection.cs)
-						TestBuilder.NavButton("Selection Galleries", () => new SelectionGallery(), Navigation),			
+						TestBuilder.NavButton("Selection Galleries", () => new SelectionGallery(), Navigation),
 					}
-				}
-			};
+					}
+				};
+			}
 		}
 	}
 }
