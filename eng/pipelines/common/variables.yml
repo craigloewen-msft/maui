@@ -25,10 +25,10 @@ variables:
   value: $[eq(variables['Build.Reason'], 'PullRequest')]
 - name: isLocHandoffBranch
   value: $[in(variables['Build.SourceBranch'], 'refs/heads/net9.0', 'refs/heads/net8.0', 'refs/heads/net7.0', 'refs/heads/main')]
-- name: signingCondition
+- name: signingCondition    # UNDONE: TEST: DO NOT MERGE TO MAIN refs/heads/try-new-servcon
   value: $[or(
             eq(variables['Sign'], 'true'),
-            in(variables['Build.SourceBranch'], 'refs/heads/net9.0', 'refs/heads/net8.0', 'refs/heads/net7.0', 'refs/heads/main'),
+            in(variables['Build.SourceBranch'], 'refs/heads/net9.0', 'refs/heads/net8.0', 'refs/heads/net7.0', 'refs/heads/main', 'refs/heads/try-new-servcon'),
             startsWith(variables['Build.SourceBranch'], 'refs/tags/'),
             startsWith(variables['Build.SourceBranch'], 'refs/heads/release/')
           )]
