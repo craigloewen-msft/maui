@@ -62,7 +62,7 @@ resources:
     - repository: sdk-insertions
       type: github
       name: xamarin/sdk-insertions
-      ref: refs/heads/main
+      ref: refs/heads/service-connection-fix
       endpoint: xamarin
     - repository: 1ESPipelineTemplates
       type: git
